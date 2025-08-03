@@ -8,4 +8,4 @@ This script fixes the (at the time of writing) 8 year old bug, in a rather bruti
 > [!IMPORTANT]
 > The script assumes that the user is running Zen browser. I could also make this settable by the user if someone has a need for it. 
 - `photoIGFormatter.sh` - takes the photos passed as arguments, and outputs them in size and format best suited for Instagram's compression algorithm. Dependency on `imagemagick`.
-- `print_colors.sh` - displays current terminal colors
+- `print_colors.sh` - displays current terminal colors.
