@@ -7,7 +7,7 @@ while true; do
 
     if [ -n "$id" ]; then
         volume=$(wpctl get-volume "$id" | awk '{print $2}')
-        if [ $volume = "0.81" ]; then
+        if [ "$(echo "$volume > 0.8" | bc)" -eq 1 ] && [ "$(echo "$volume < 1.0" | bc)" -eq 1 ]; then
             echo "[$(date)] Zen volume dropped to $volume. Resetting to 1.0."
             wpctl set-volume "$id" 1.0
         fi
