@@ -7,9 +7,15 @@ while true; do
 
     if [ -n "$id" ]; then
         volume=$(wpctl get-volume "$id" | awk '{print $2}')
-        if [ "$(echo "$volume > 0.8" | bc)" -eq 1 ] && [ "$(echo "$volume < 1.0" | bc)" -eq 1 ]; then
-            echo "[$(date)] Zen volume dropped to $volume. Resetting to 1.0."
-            wpctl set-volume "$id" 1.0
+
+        if [ -n "$volume" ]; then
+            is_gt_treshold=$(echo "$volume > 0.8" | bc)
+            is_lt_treshold=$(echo "$volume < 1.0" | bc)
+
+            if [ "$is_gt_treshold" -eq 1 ] && [ "$is_lt_treshold" -eq 1 ]; then
+            	#echo "[$(date)] Volume is $volume (between 0.8 and 1.0). Resetting to 1.0..."
+                wpctl set-volume "$id" 1.0
+            fi
         fi
     fi
 
