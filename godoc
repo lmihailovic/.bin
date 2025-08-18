@@ -1,3 +1,3 @@
 #!/bin/env sh
 
-go doc $1 | pandoc -f markdown -o /tmp/tmp.html && zen-browser /tmp/tmp.html; sleep 1s; rm /tmp/tmp.html
+go doc $1 | pandoc -f markdown -o /tmp/tmp.html && xdg-open /tmp/tmp.html; sleep 1s; rm /tmp/tmp.html
